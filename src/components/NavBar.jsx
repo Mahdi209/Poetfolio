@@ -62,7 +62,7 @@ export default function NavBar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-16 left-0 right-0 bg-white bg-slate-200 dark:bg-[#112e42] p-4 shadow-md lg:hidden flex flex-col items-center  z-30 gap-y-5"
+              className="absolute top-16 left-0 right-0  bg-slate-200 dark:bg-[#112e42] p-4 shadow-md lg:hidden flex flex-col items-center  z-30 gap-y-5"
             >
               {navLink.map((item, index) => (
                 <Link

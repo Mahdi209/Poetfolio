@@ -21,7 +21,7 @@ const fontBody = Space_Mono({
 export const metadata = {
   title: "Mohammed Mahdi | Portfolio",
   description:
-    "Welcome to the portfolio of Mohammed Mahdi. Explore my projects, skills, and experience in web development and design. Discover my journey and get in touch for collaboration opportunities.",
+    "Welcome to the portfolio of Mohammed Mahdi. Explore my projects, skills, and experience in web development. Discover my journey and get in touch for collaboration opportunities.",
 };
 
 export default function RootLayout({ children }) {
