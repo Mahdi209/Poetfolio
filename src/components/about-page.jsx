@@ -44,7 +44,7 @@ export default function AboutPage() {
               <div className="space-y-2">
                 <div className="grid gap-1">
 
-                  <p className="text-slate-200 lg:text-xl">
+                  <p className="text-black dark:text-slate-200 lg:text-xl">
                     Hi, I'm Mohammed Mahdi Salah, a passionate full-stack web developer with a love for building
                     efficient, modern websites. I'm constantly learning and adapting to the latest technologies to
                     deliver the best possible solutions.
@@ -57,7 +57,7 @@ export default function AboutPage() {
               <h2 className="text-xl lg:text-4xl font-bold">Technical Expertise</h2>
               <div className="space-y-2">
                 <div className="grid gap-1">
-                  <p className="text-slate-200 lg:text-xl">
+                  <p className="text-black dark:text-slate-200 lg:text-xl">
                     My toolkit includes React, Express, MongoDB, Tailwind CSS, and more. I have a knack for crafting
                     intuitive user interfaces and robust back-end systems. I'm always eager to tackle new challenges and
                     expand my skill set.
@@ -71,7 +71,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-2">
                 <div className="grid gap-1">
-                  <p className="text-slate-200 lg:text-xl ">
+                  <p className="text-black dark:text-slate-200 lg:text-xl ">
                     When I'm not coding, I enjoy photography and drawing. These creative outlets help me relax and
                     recharge, and they often inspire my work as a developer. I believe that a well-rounded perspective
                     is essential for creating truly great digital experiences.
