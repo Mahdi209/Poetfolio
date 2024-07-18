@@ -89,3 +89,21 @@
 .dark-mode-toggle-icon {
   animation: darkModeToggle 0.3s ease-in-out;
 }
+#container{
+  display: inline-block;
+
+}
+#myText{
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  animation:typing 5s steps(40,end) infinite;
+}
+@keyframes typing {
+  from{
+    width: 0;
+  }
+  to{
+    width: 100%;
+  }
+}
