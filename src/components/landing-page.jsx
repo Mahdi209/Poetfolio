@@ -10,12 +10,15 @@ export function LandingPage() {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div data-aos="fade-right" className="space-y-2">
-                  <h1  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Mohammed Mahdi Salah
                   </h1>
                   <div id="container" className="w-[80%] ">
-                    <h1 id="myText" className="text-xl lg:text-4xl text-amber-300   ">
-                       Full stack web Developer
+                    <h1
+                      id="myText"
+                      className="text-xl lg:text-4xl  text-orange-600 dark:text-orange-300 "
+                    >
+                      Full stack web Developer
                     </h1>
                   </div>
                   <p className="max-w-[600px] text-black dark:text-white md:text-xl">
@@ -26,9 +29,9 @@ export function LandingPage() {
               </div>
               <div data-aos="fade-left">
                 <Image
-                    src={myPhoto}
-                    alt="Hero"
-                    className="mx-auto  overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
+                  src={myPhoto}
+                  alt="Hero"
+                  className="mx-auto  overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
                 />
               </div>
             </div>
