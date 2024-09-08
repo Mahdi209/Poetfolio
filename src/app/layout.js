@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
           content="Welcome to the portfolio of Mohammed Mahdi. Explore my projects, skills, and experience in web development."
         />
         <meta
-          name="twitter:image"
+          name="og:image"
           content="https://mohammed-mahdi.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FmyPhoto.38d802fb.png&w=3840&q=75"
         />
       </head>
