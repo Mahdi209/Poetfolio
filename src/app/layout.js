@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="og:image"
-          content="https://mohammed-mahdi.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FmyPhoto.38d802fb.png&w=3840&q=75"
+          content="https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcoding&psig=AOvVaw1KUTgJboZxcWeYNqJsJv9J&ust=1725842355261000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOj8iveNsogDFQAAAAAdAAAAABAJ"
         />
       </head>
       <body
