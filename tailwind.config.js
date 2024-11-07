@@ -66,10 +66,38 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        'spin-slow': 'spin 8s linear infinite',
+        'reverse-spin': 'reverse-spin 12s linear infinite',
+        'tilt': 'tilt 10s infinite linear',
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'spin-slow': 'spin 8s linear infinite',
+        'reverse-spin': 'reverse-spin 12s linear infinite',
+        'tilt': 'tilt 10s infinite linear',
+        blob: "blob 7s infinite",
+        float: 'float 6s ease-in-out infinite',
+        'float-delay-2': 'float 6s ease-in-out 2s infinite',
+        'float-delay-4': 'float 6s ease-in-out 4s infinite',
       },
     },
   },

@@ -3,7 +3,7 @@ import { Space_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import NavBar from "@/components/NavBar";
-import myPhoto from "../../public/myPhoto.png";
+import { Analytics } from '@vercel/analytics/react';
 
 import "./globals.css";
 
@@ -19,33 +19,53 @@ const fontBody = Space_Mono({
   display: "swap",
   variable: "--font-body",
 });
+
 export const metadata = {
-  title: "Mohammed Mahdi | Portfolio",
+  title: "Mohammed Mahdi | Full-Stack Developer",
   description:
     "Welcome to the portfolio of Mohammed Mahdi. Explore my projects, skills, and experience in web development. Discover my journey and get in touch for collaboration opportunities.",
+  keywords: ["Full-Stack Developer", "Web Development", "React", "Next.js", "JavaScript"],
+  authors: [{ name: "Mohammed Mahdi" }],
+  creator: "Mohammed Mahdi",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://your-domain.com",
+    site_name: "Mohammed Mahdi Portfolio",
+    title: "Mohammed Mahdi | Full-Stack Developer",
+    description: "Full-Stack Developer specializing in modern web technologies",
+    images: [
+      {
+        url: "/myphoto.jpg", // Add your custom OG image
+        width: 1200,
+        height: 630,
+        alt: "Mohammed Mahdi Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohammed Mahdi | Full-Stack Developer",
+    description: "Full-Stack Developer specializing in modern web technologies",
+    images: ["/myphoto.jpg"], // Same as OG image
+    creator: "@YourTwitterHandle",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mohammed Mahdi | Portfolio" />
-        <meta
-          name="twitter:description"
-          content="Welcome to the portfolio of Mohammed Mahdi. Explore my projects, skills, and experience in web development."
-        />
-        <meta
-          name="og:image"
-          content="https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcoding&psig=AOvVaw1KUTgJboZxcWeYNqJsJv9J&ust=1725842355261000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOj8iveNsogDFQAAAAAdAAAAABAJ"
-        />
-      </head>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(
+        fontHeading.variable,
+        fontBody.variable,
+      )}
+    >
       <body
         className={cn(
-          "min-h-screen bg-slate-200 dark:bg-[#112e42] antialiased",
-          fontHeading.className,
-          fontBody.className,
+          "min-h-screen bg-gradient-to-b from-slate-200 via-slate-100 to-slate-200 dark:from-[#112e42] dark:via-[#0a192f] dark:to-[#112e42] antialiased",
+          fontBody.className
         )}
       >
         <ThemeProvider
@@ -54,11 +74,22 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
-          <hr />
+          {/* Navigation */}
+          <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-200/80 dark:bg-[#112e42]/80 border-b border-slate-200/20 dark:border-slate-800/20">
+            <NavBar />
+          </header>
 
-          {children}
+          {/* Main Content */}
+          <main className="pt-16">
+            {children}
+          </main>
+
+          {/* Noise Overlay */}
+          <div className="pointer-events-none fixed inset-0 z-30 opacity-20">
+            <div className="h-full w-full bg-noise" />
+          </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

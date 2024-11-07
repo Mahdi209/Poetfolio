@@ -1,34 +1,80 @@
 import { skills } from "../../public/navLink";
+import { motion } from "framer-motion";
+
 export default function Skills() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-200 dark:bg-[#112e42] text-white ">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-black dark:text-white">
-              Our Skills
-            </h2>
-            <p className="max-w-[700px]  md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-black dark:text-white">
-              We have a diverse set of skills that allow us to deliver
-              exceptional results for our clients.
-            </p>
-          </div>
+    <section id="skills" className="w-full py-20 bg-gradient-to-b from-slate-200 to-slate-100 dark:from-[#112e42] dark:to-[#0a192f]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-500 to-orange-700 dark:from-orange-400 dark:to-orange-600 inline-block text-transparent bg-clip-text mb-6"
+          >
+            Technical Skills
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg"
+          >
+            Crafting digital experiences with modern technologies and tools
+          </motion.p>
         </div>
-        <div className="grid grid-cols-2 gap-6 mt-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+
+        {/* Skills Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
+        >
           {skills.map((skill, index) => (
-            <div data-aos="fade-down-right">
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center gap-2 hover:scale-125 duration-500 "
-              >
-                <div className="bg-muted rounded-full w-16 h-16 flex items-center justify-center text-cyan-700  dark:text-cyan-500 hover:bg-cyan-900 transition-all duration-500 hover:text-white">
-                  <skill.icon className="text-3xl  " />
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              className="group"
+            >
+              <div className="relative flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a365d]/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
+                {/* Glowing background effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400/0 via-orange-400/10 to-orange-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Icon */}
+                <div className="relative z-10 mb-4 text-gray-800 dark:text-gray-200 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-300">
+                  <skill.icon className="text-3xl" />
                 </div>
-                <span className="text-sm font-medium text-black dark:text-white">{skill.name}</span>
+
+                {/* Skill name */}
+                <span className="relative z-10 text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
+                  {skill.name}
+                </span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

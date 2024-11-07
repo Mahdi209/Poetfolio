@@ -89,21 +89,107 @@
 .dark-mode-toggle-icon {
   animation: darkModeToggle 0.3s ease-in-out;
 }
-#container{
+#container {
   display: inline-block;
-
 }
-#myText{
+#myText {
   overflow: hidden;
   border-right: 0.15em solid orange;
   white-space: nowrap;
-  animation:typing 5s steps(40,end) infinite;
+  animation: typing 5s steps(40, end) infinite;
 }
 @keyframes typing {
-  from{
+  from {
     width: 0;
   }
-  to{
+  to {
     width: 100%;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Optional: Custom scroll behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+@keyframes noise {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}
+
+.bg-noise {
+  background: url("/noise.png");
+  animation: noise 1s steps(2) infinite;
+}
+
+::selection {
+  background-color: rgba(249, 115, 22, 0.2); /* orange-500 with opacity */
+  color: inherit;
+}
+
+/* Particle animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.particle {
+  pointer-events: none;
+  opacity: 0.6;
+  animation: float 1s ease-in-out infinite alternate;
+}
+
+/* Ripple animation */
+.ripple {
+  pointer-events: none;
 }

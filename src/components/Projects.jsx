@@ -1,64 +1,100 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "../../public/navLink";
+import { motion } from "framer-motion";
+import { FiExternalLink, FiGithub } from "react-icons/fi"; // Import icons
+
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full py-12 md:py-24 lg:py-32 bg-slate-200 dark:bg-[#112e42] text-white"
+      className="w-full py-20 bg-gradient-to-b from-slate-200 to-slate-100 dark:from-[#112e42] dark:to-[#0a192f]"
     >
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-black dark:text-white">
-              Recent Projects
-            </h2>
-            <p className="max-w-[900px]  md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-black dark:text-white">
-              Check out some of my recent web development projects.
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-500 to-orange-700 dark:from-orange-400 dark:to-orange-600 inline-block text-transparent bg-clip-text mb-6">
+            Featured Projects
+          </h2>
+          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+            A collection of projects that showcase my passion for web
+            development
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div data-aos="fade-right">
-              <Card
-                className="overflow-hidden bg-cyan-900 text-white"
-                key={index}
-              >
-                <CardContent>
-                  <Image
-                    src={project.image}
-                    width="550"
-                    height="310"
-                    alt="Image"
-                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full mt-5"
-                  />
-                  <div className="mt-4 flex flex-col justify-center space-y-3">
-                    <h3 className="text-xl font-bold">{project.name}</h3>
-                    <p className="text-gray-300 h-20">{project.description} </p>
-                    <div className="flex gap-2">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group"
+            >
+              <Card className="h-full bg-white dark:bg-[#1a365d]/30 backdrop-blur-sm overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-0">
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Image
+                      src={project.image}
+                      width={550}
+                      height={310}
+                      alt={project.name}
+                      className="w-full aspect-video object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Overlay Links */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Link
                         href={project.live.Link}
-                        className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors  focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  hover:bg-white hover:text-black   duration-700 "
-                        prefetch={false}
                         target="_blank"
+                        className="p-3 rounded-full bg-orange-500 text-white hover:bg-orange-600 transform hover:scale-110 transition-all duration-300"
                       >
-                        {project.live.name}
+                        <FiExternalLink className="w-5 h-5" />
                       </Link>
                       <Link
                         href={project.github.Link}
-                        className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors   focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none text-black hover:bg-primary hover:text-white duration-700 disabled:opacity-50 text-black dark:text-white"
-                        prefetch={false}
                         target="_blank"
+                        className="p-3 rounded-full bg-gray-800 text-white hover:bg-gray-900 transform hover:scale-110 transition-all duration-300"
                       >
-                        {project.github.name}
+                        <FiGithub className="w-5 h-5" />
                       </Link>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">
+                      {project.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    {/* Tech Stack Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies?.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 text-xs rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
